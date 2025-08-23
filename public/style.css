@@ -1,0 +1,55 @@
+.card {
+  width: 240px; 
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 16px; /* Menos espacio interior */
+  text-align: center;
+}
+
+.card-body h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #222;
+  letter-spacing: 0.4px;
+}
+
+.card-body p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.cta-button {
+  background-color: #FFD700;
+  color: #000;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 13px;
+}
+
+.cta-button:hover {
+  background-color: #e6c200;
+}
