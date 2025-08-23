@@ -1,4 +1,35 @@
-.card {
+/* Estilos de crearcuenta.html */
+.logo-container {
+    margin-top: 500px;
+    margin-bottom: 80px;
+}
+.banner-container{
+    margin-top: 540px;
+    width: 650px;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+}
+
+.form-label {
+    font-weight: bold;   
+    color: #333333;     
+}
+
+.form-check-input {
+    width: 25px; 
+    height: 25px;  
+}
+    
+.form-check-label {
+    font-size: 15px;  
+    margin-left: 10px;
+}
+
+/* Estilos específicos para las tarjetas de planes en index.html */
+#seccion-planes .card {
   width: 240px; 
   height: 250px;
   border-radius: 10px;
@@ -9,36 +40,36 @@
   transition: transform 0.3s ease;
 }
 
-.card:hover {
+#seccion-planes .card:hover {
   transform: translateY(-4px);
 }
 
-.card-image img {
+#seccion-planes .card-image img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-.card-body {
+#seccion-planes .card-body {
   padding: 16px; /* Menos espacio interior */
   text-align: center;
 }
 
-.card-body h2 {
+#seccion-planes .card-body h2 {
   font-size: 18px;
   margin-bottom: 10px;
   color: #222;
   letter-spacing: 0.4px;
 }
 
-.card-body p {
+#seccion-planes .card-body p {
   font-size: 13px;
   color: #555;
   margin-bottom: 16px;
   line-height: 1.4;
 }
 
-.cta-button {
+#seccion-planes .cta-button {
   background-color: #FFD700;
   color: #000;
   padding: 8px 14px;
@@ -50,6 +81,168 @@
   font-size: 13px;
 }
 
+#seccion-planes .cta-button:hover {
+  background-color: #e6c200;
+}
+
+
+/* Estilos de login.html */
+body.login-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.login-form {
+  padding: 40px;
+}
+
+@media (max-width: 768px) {
+  .bg-image {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+.card {
+  /* Removed fixed width/height for better responsiveness, let content and Bootstrap grid handle it */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card-body {
+  padding: 16px;
+  text-align: center;
+}
+.card-body h5 { /* Changed from h2 to h5 to match HTML structure */
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #222;
+  letter-spacing: 0.4px;
+}
+.card-body p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.cta-button {
+  background-color: #FFD700;
+  color: #000;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 13px;
+}
 .cta-button:hover {
   background-color: #e6c200;
+}
+/* Styles from crearcuenta.html */
+.logo-container {
+  margin-top: 0; /* Adjusted from 500px - review if specific spacing is needed */
+  margin-bottom: 30px; /* Adjusted for better spacing */
+}
+.banner-container {
+  margin-top: 0; /* Adjusted from 540px - review if specific spacing is needed */
+  width: 100%; /* Made responsive */
+  max-width: 650px; /* Retained max-width */
+}
+.form-check {
+  display: flex;
+  align-items: center;
+}
+.form-label {
+  font-weight: bold;
+  color: #333333;
+}
+.form-check-input {
+  width: 25px;
+  height: 25px;
+}
+.form-check-label {
+  font-size: 15px;
+  margin-left: 10px;
+}
+/* Styles from login.html */
+.login-body { /* Added a class to body for login page specific styles */
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-box {
+  width: 90%;
+  max-width: 1000px;
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.login-form {
+  padding: 40px;
+}
+@media (max-width: 768px) {
+  .login-box .col-md-6:first-child { /* Target the image column in login.html */
+    display: none;
+  }
+}
+/* Custom spacing for checkboxes in crearcuenta.html */
+.form-check-group .form-check {
+    margin-bottom: 10px; /* Add spacing between checkbox items */
+}
+.form-check-group .form-check:last-child {
+    margin-bottom: 0; /* No margin after the last one */
+}
+/* Footer Styles */
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: #f8f9fa; /* Light text */
+    padding: 40px 0;
+    font-size: 0.9rem;
+}
+.footer a {
+    color: #ffc107; /* Warning color for links */
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.footer .social-icons a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #f8f9fa;
+    transition: color 0.3s ease;
+}
+.footer .social-icons a:hover {
+    color: #ffc107;
 }
