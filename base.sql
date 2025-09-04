@@ -1,92 +1,67 @@
-CREATE DATABASE  volumenDeHierro;
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 04-09-2025 a las 21:07:27
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
-USE volumenDeHierro;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE TABLE Clientes (
-    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    apellido VARCHAR(100) NOT NULL,
-    fecha_nacimiento DATE,
-    sexo ENUM('M', 'F', 'Otro'),
-    telefono VARCHAR(15),
-    email VARCHAR(100) UNIQUE,
-    fecha_registro DATE DEFAULT (CURRENT_DATE), 
-    estado BOOLEAN DEFAULT TRUE
-);
 
-CREATE TABLE Membresias (
-    id_membresia INT PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(50) NOT NULL, 
-    descripcion TEXT,
-    precio DECIMAL(10, 2) NOT NULL,
-    duracion_dias INT NOT NULL 
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE Clientes_Membresias (
-    id_cliente_membresia INT PRIMARY KEY AUTO_INCREMENT,
-    id_cliente INT,
-    id_membresia INT,
-    fecha_inicio DATE NOT NULL,
-    fecha_fin DATE NOT NULL,
-    estado ENUM('Activa', 'Vencida', 'Suspendida') DEFAULT 'Activa',
+--
+-- Base de datos: `volumendehierro`
+--
 
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
-    FOREIGN KEY (id_membresia) REFERENCES Membresias(id_membresia) ON DELETE SET NULL
-);
+-- --------------------------------------------------------
 
-CREATE TABLE Empleados (
-    id_empleado INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    apellido VARCHAR(100) NOT NULL,
-    puesto VARCHAR(50),
-    telefono VARCHAR(15),
-    email VARCHAR(100) UNIQUE,
-    fecha_contratacion DATE,
-    salario DECIMAL(10, 2)
-);
+--
+-- Estructura de tabla para la tabla `clientes`
+--
 
-CREATE TABLE Entrenadores (
-    id_entrenador INT PRIMARY KEY,
-    especialidad VARCHAR(100),
+CREATE TABLE `clientes` (
+  `id_cliente` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `sexo` enum('M','F','Otro') DEFAULT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `fecha_registro` date DEFAULT curdate(),
+  `estado` tinyint(1) DEFAULT 1,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-    FOREIGN KEY (id_entrenador) REFERENCES Empleados(id_empleado) ON DELETE CASCADE
-);
+--
+-- Índices para tablas volcadas
+--
 
-CREATE TABLE Clases (
-    id_clase INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL, 
-    descripcion TEXT,
-    cupo_maximo INT,
-    horario TIME,
-    dias_semana VARCHAR(50) 
-);
+--
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id_cliente`),
+  ADD UNIQUE KEY `email` (`email`);
 
-CREATE TABLE Clases_Entrenadores (
-    id_clase_entrenador INT PRIMARY KEY AUTO_INCREMENT,
-    id_clase INT,
-    id_entrenador INT,
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
 
-    FOREIGN KEY (id_clase) REFERENCES Clases(id_clase) ON DELETE CASCADE,
-    FOREIGN KEY (id_entrenador) REFERENCES Entrenadores(id_entrenador) ON DELETE CASCADE
-);
+--
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
-CREATE TABLE Inscripciones_Clases (
-    id_inscripcion INT PRIMARY KEY AUTO_INCREMENT,
-    id_cliente INT,
-    id_clase INT,
-    fecha_inscripcion DATE DEFAULT (CURRENT_DATE), 
-
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE CASCADE,
-    FOREIGN KEY (id_clase) REFERENCES Clases(id_clase) ON DELETE CASCADE
-);
-
-CREATE TABLE Pagos (
-    id_pago INT PRIMARY KEY AUTO_INCREMENT,
-    id_cliente INT,
-    fecha_pago DATE DEFAULT (CURRENT_DATE), 
-    monto DECIMAL(10, 2) NOT NULL,
-    metodo_pago ENUM('Efectivo', 'Tarjeta', 'Transferencia'),
-    descripcion TEXT,
-
-    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente) ON DELETE SET NULL
-);
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
