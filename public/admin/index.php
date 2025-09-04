@@ -88,7 +88,7 @@
 <body>
     <div class="container">
         <div class="text-center mb-4">
-            <img src="../img/logo.png" alt="Logo" width="150">
+            <img src="../../img/logo.png" alt="Logo" width="150">
             <h1 class="mt-2">Panel de Administración</h1>
             <p class="lead">Selecciona una sección para gestionar.</p>
         </div>
